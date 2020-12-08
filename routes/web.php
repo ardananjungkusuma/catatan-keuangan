@@ -11,11 +11,18 @@
 |
 */
 
-Route::get('/', 'AuthController@login');
+Route::get('/', function () {
+    return view('home.index');
+});
 Route::get('/login', 'AuthController@login')->name('login');
+Route::get('/register', 'AuthController@register')->name('register');
 Route::get('/logout', 'AuthController@logout');
 Route::post('/postLogin', 'AuthController@postLogin');
+Route::post('/postRegister', 'AuthController@postRegister');
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => ['auth', 'roleCheck:admin,user']], function () {
     Route::get('/dashboard', 'DashboardController@index');
+
+    Route::get('/pemasukan', 'PemasukanController@index');
+    Route::post('/pemasukan/add', 'PemasukanController@add');
 });

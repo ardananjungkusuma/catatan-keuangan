@@ -11,31 +11,39 @@
                         <div class="col-lg-12">
                             <div class="p-5">
                                 <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4">Login</h1>
+                                    <h1 class="h4 text-gray-900 mb-4">Register</h1>
                                 </div>
-                                @if(session('status'))
-                                <div class="alert alert-info" role="alert">
-                                    {{ session('status') }}
-                                </div>
-                                @endif
-                                <form class="user" method="POST" action="/postLogin">
+                                <form class="user" method="POST" action="/postRegister">
                                     @csrf
-                                    <div class="form-group">
+                                    <div class="form-group {{ $errors->has('name') ? ' has-error': '' }}">
+                                        <input type="text" name="name" class="form-control form-control-user"
+                                            value="{{ old('name') }}" placeholder="Enter Your Name...">
+                                        @if($errors->has('name'))
+                                        <span class="help-block">{{ $errors->first('name') }}</span>
+                                        @endif
+                                    </div>
+                                    <div class="form-group {{ $errors->has('email') ? ' has-error': '' }}">
                                         <input type="email" name="email" class="form-control form-control-user"
                                             id="exampleInputEmail" aria-describedby="emailHelp"
-                                            placeholder="Enter Email Address...">
+                                            value="{{ old('email') }}" placeholder="Enter Email Address...">
+                                        @if($errors->has('email'))
+                                        <span class="help-block">{{ $errors->first('email') }}</span>
+                                        @endif
                                     </div>
                                     <div class="form-group">
                                         <input type="password" name="password" class="form-control form-control-user"
                                             id="exampleInputPassword" placeholder="Password">
+                                        @if($errors->has('password'))
+                                        <span class="help-block">{{ $errors->first('password') }}</span>
+                                        @endif
                                     </div>
                                     <button type="submit" class="btn btn-primary btn-user btn-block">
-                                        Login
+                                        Register
                                     </button>
                                 </form>
                                 <hr>
                                 <div class="text-center">
-                                    <a class="small" href="/register">Create an Account!</a>
+                                    <a class="small" href="/login">Already have an account? Login</a>
                                 </div>
                             </div>
                         </div>
@@ -45,4 +53,5 @@
         </div>
     </div>
 </div>
+
 @endsection
