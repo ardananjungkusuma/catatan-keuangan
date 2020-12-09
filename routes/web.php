@@ -25,4 +25,9 @@ Route::group(['middleware' => ['auth', 'roleCheck:admin,user']], function () {
 
     Route::get('/pemasukan', 'PemasukanController@index');
     Route::post('/pemasukan/add', 'PemasukanController@add');
+    Route::get('/pemasukan/{id}/delete', 'PemasukanController@delete');
+
+    Route::get('/pengeluaran', 'PengeluaranController@index');
+    Route::post('/pengeluaran/add', 'PengeluaranController@add');
+    Route::get('/pengeluaran/{id}/delete', 'PengeluaranController@delete');
 });

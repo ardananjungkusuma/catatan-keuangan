@@ -42,4 +42,20 @@ class PemasukanController extends Controller
 
         return redirect('/pemasukan')->with('status', 'Sukses Tambah Pemasukan');
     }
+
+    public function delete($id)
+    {
+        $pemasukan_data = Pemasukan::find($id);
+        $user_data = User::find($pemasukan_data->users_id);
+        $total_pemasukan_baru = $user_data->total_pemasukan - $pemasukan_data->jumlah_pemasukan;
+        $saldo_baru = $user_data->saldo - $pemasukan_data->jumlah_pemasukan;
+        User::where('id', auth()->user()->id)
+            ->update([
+                'saldo' => $saldo_baru,
+                'total_pemasukan' => $total_pemasukan_baru
+            ]);
+        $pemasukan_data->delete();
+
+        return redirect('/pemasukan')->with('status', 'Data Pemasukan Sukses Dihapus');
+    }
 }

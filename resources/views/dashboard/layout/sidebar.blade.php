@@ -1,4 +1,4 @@
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion toggled" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
@@ -52,7 +52,7 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">MENU PENGELUARAN</h6>
-                <a class="collapse-item" href="#">Daftar Pengeluaran</a>
+                <a class="collapse-item" href="/pengeluaran">Daftar Pengeluaran</a>
                 <a class="collapse-item" href="#">Cetak Laporan</a>
             </div>
         </div>
@@ -70,6 +70,22 @@
                 <h6 class="collapse-header">MENU WISHLIST</h6>
                 <a class="collapse-item" href="#">Daftar Wishlist</a>
                 <a class="collapse-item" href="#">Cetak Wishlist</a>
+            </div>
+        </div>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities3"
+            aria-expanded="true" aria-controls="collapseUtilities2">
+            <i class="fas fa-fw fa-dollar-sign"></i>
+            <span>Hutang</span>
+        </a>
+        <div id="collapseUtilities3" class="collapse" aria-labelledby="headingUtilities"
+            data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">MENU HUTANG</h6>
+                <a class="collapse-item" href="#">Daftar Hutang</a>
+                <a class="collapse-item" href="#">Cetak Hutang</a>
             </div>
         </div>
     </li>

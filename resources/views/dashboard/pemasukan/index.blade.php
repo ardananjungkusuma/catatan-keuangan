@@ -22,6 +22,7 @@
                 <th>Kategori</th>
                 <th>Tanggal Pemasukan</th>
                 <th>Jumlah Pemasukan</th>
+                <th>Aksi</th>
             </tr>
         </thead>
         <tbody>
@@ -31,6 +32,10 @@
                 <td>{{ $pemasukan->kategori }}</td>
                 <td>{{ date("d-m-Y", strtotime($pemasukan->tanggal_pemasukan)) }}</td>
                 <td>Rp. {{ number_format($pemasukan->jumlah_pemasukan, 0, ',', '.') }}</td>
+                <td><a href="/pemasukan/{{ $pemasukan->id }}/delete" class="btn btn-sm btn-danger shadow-sm mb-3"
+                        onclick="return confirm('Apakah anda ingin menghapus data ({{ $pemasukan->nama_pemasukan }})?')"><i
+                            class="fas fa-trash fa-sm text-white-50"></i> Hapus</a>
+                </td>
             </tr>
             @endforeach
         </tbody>
@@ -80,9 +85,7 @@
                     <div class="form-group {{ $errors->has('tanggal_pemasukan') ? ' has-error': '' }}">
                         <label>Tanggal Pemasukan</label>
                         <input type="date" name="tanggal_pemasukan" class="form-control form-control-user"
-                            value="{{ old('tanggal_pemasukan') }}"
-                            max="{{ date('Y-m-d',strtotime(str_replace('-', '/', date('Y-m-d')) . "+1 days")) }}"
-                            required>
+                            value="{{ old('tanggal_pemasukan') }}" required>
                         @if($errors->has('tanggal_pemasukan'))
                         <span class="help-block">{{ $errors->first('tanggal_pemasukan') }}</span>
                         @endif
