@@ -113,15 +113,31 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-6 col-lg-5">
-                        <div class="card shadow mb-4">
-                            <!-- Card Header - Dropdown -->
-                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                <h6 class="m-0 font-weight-bold text-primary">Grafik Pengeluaran</h6>
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-5">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Grafik Pemasukan</h6>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div id="chartpemasukan"></div>
+                                </div>
                             </div>
-                            <!-- Card Body -->
-                            <div class="card-body">
-                                <div id="chartpengeluaran"></div>
+                        </div>
+                        <div class="col-xl-6 col-lg-5">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Grafik Pengeluaran</h6>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div id="chartpengeluaran"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -183,6 +199,7 @@
             valueSuffix: '%'
         }
     },
+    colors: ['#1CC88A','#E74A3B'],
     plotOptions: {
         pie: {
             allowPointSelect: true,
@@ -225,11 +242,12 @@ Highcharts.chart('chartpengeluaran', {
     tooltip: {
         headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
         pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-            '<td style="padding:0"><b>Rp. {point.y:.1f}</b></td></tr>',
+            '<td style="padding:0"><b>Rp. {point.y}</b></td></tr>',
         footerFormat: '</table>',
         shared: true,
         useHTML: true
     },
+    colors: ['#E74A3B'],
     plotOptions: {
         column: {
             pointPadding: 0.2,
@@ -239,6 +257,43 @@ Highcharts.chart('chartpengeluaran', {
     series: [{
         name: 'Pengeluaran',
         data: {!! json_encode($data_pengeluaran_by_kategori) !!}
+    }]
+});
+Highcharts.chart('chartpemasukan', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Grafik Pemasukan by Kategori'
+    },
+    xAxis: {
+        categories: {!! json_encode($kategori_pemasukan) !!},
+        crosshair: true
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Rupiah (Rp)'
+        }
+    },
+    tooltip: {
+        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>Rp. {point.y}</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    },
+    colors: ['#1CC88A'],
+    plotOptions: {
+        column: {
+            pointPadding: 0.2,
+            borderWidth: 0
+        }
+    },
+    series: [{
+        name: 'Pemasukan',
+        data: {!! json_encode($data_pemasukan_by_kategori) !!}
     }]
 });
     </script>

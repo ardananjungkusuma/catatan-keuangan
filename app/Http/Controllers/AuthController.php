@@ -18,7 +18,7 @@ class AuthController extends Controller
         if (Auth::attempt($request->only('email', 'password'))) {
             return redirect('/dashboard');
         } else {
-            return redirect('/login');
+            return redirect('/login')->with('status', 'Invalid Email or Password');
         }
     }
 
