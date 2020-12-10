@@ -30,4 +30,9 @@ Route::group(['middleware' => ['auth', 'roleCheck:admin,user']], function () {
     Route::get('/pengeluaran', 'PengeluaranController@index');
     Route::post('/pengeluaran/add', 'PengeluaranController@add');
     Route::get('/pengeluaran/{id}/delete', 'PengeluaranController@delete');
+
+    Route::get('/wishlist', 'WishlistController@index');
+    Route::post('wishlist/add', 'WishlistController@add');
+    Route::get('/wishlist/{id}/edit', 'WishlistController@edit');
+    Route::post('/wishlist/{id}/postEdit', 'WishlistController@postEdit');
 });

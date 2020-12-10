@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 08, 2020 at 06:41 PM
+-- Generation Time: Dec 10, 2020 at 04:57 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
 
@@ -77,8 +77,35 @@ CREATE TABLE `pemasukan` (
 INSERT INTO `pemasukan` (`id`, `users_id`, `nama_pemasukan`, `kategori`, `tanggal_pemasukan`, `jumlah_pemasukan`, `created_at`, `updated_at`) VALUES
 (1, 1, 'Kiriman Bulanan Ortu', 'Orang Tua', '2020-12-08', 1500000, '2020-12-08 17:23:35', '2020-12-08 17:23:35'),
 (2, 1, 'Joki Uas web', 'Kerja', '2020-12-08', 100000, '2020-12-08 17:23:35', '2020-12-08 17:23:35'),
-(4, 1, 'Servis Laptop Teman', 'Kerja', '2020-12-09', 50000, '2020-12-08 10:40:15', '2020-12-08 10:40:15'),
-(5, 2, 'Dari ayah', 'Orang Tua', '2020-12-08', 1000000, '2020-12-08 10:41:07', '2020-12-08 10:41:07');
+(5, 2, 'Dari ayah', 'Orang Tua', '2020-12-08', 1000000, '2020-12-08 10:41:07', '2020-12-08 10:41:07'),
+(6, 1, 'Design Banner Natal', 'Kerja', '2020-12-09', 100000, '2020-12-08 10:54:39', '2020-12-08 10:54:39');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pengeluaran`
+--
+
+CREATE TABLE `pengeluaran` (
+  `id` int(11) NOT NULL,
+  `users_id` int(11) NOT NULL,
+  `nama_pengeluaran` varchar(250) NOT NULL,
+  `kategori` varchar(250) NOT NULL,
+  `tanggal_pengeluaran` date NOT NULL,
+  `jumlah_pengeluaran` int(50) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `pengeluaran`
+--
+
+INSERT INTO `pengeluaran` (`id`, `users_id`, `nama_pengeluaran`, `kategori`, `tanggal_pengeluaran`, `jumlah_pengeluaran`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Beli Kabel USB', 'Belanja', '2020-12-08', 30000, NULL, NULL),
+(2, 1, 'Beli Kuota', 'Tagihan', '2020-12-09', 40000, '2020-12-08 23:05:47', '2020-12-08 23:05:47'),
+(4, 1, 'Beli OTG', 'Belanja', '2020-12-09', 10000, '2020-12-08 23:53:54', '2020-12-08 23:53:54'),
+(5, 1, 'Kebab', 'Makanan & Minuman', '2020-12-09', 15000, '2020-12-09 00:12:28', '2020-12-09 00:12:28');
 
 -- --------------------------------------------------------
 
@@ -105,10 +132,38 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`, `saldo`, `total_pemasukan`, `total_pengeluaran`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Ardan Anjung', 'ardan@gmail.com', '$2y$10$wTDWyNFxrkXcU4AjyACIr.KCJVGrVv7lnTi1WJ6XG8lcUzYLC0lmC', 'user', 1650000, 1650000, 0, 'cHYK2A8dkwgajpj4DjMhFqCx8Zu9DByla6rVHkZfE33SuXS9P1AByRUBnYzn', '2020-11-27 23:57:21', '2020-12-08 10:40:15'),
-(2, 'Sultan Achmad Qum M', 'sultan@gmail.com', '$2y$10$lb592LGGzZLR7d1YZT40Rugv8seJ2ByGa3ZUH7m..x3LSCZ0gqxSm', 'user', 1000000, 1000000, 0, 'qIdkYeFu6GKMGT8BS0jTScA05Kr1sxxcz9qSZV27wPGiMgzjx3rgJCTV2NEI', '2020-12-08 08:29:01', '2020-12-08 10:41:07'),
+(1, 'Ardan Anjung', 'ardan@gmail.com', '$2y$10$wTDWyNFxrkXcU4AjyACIr.KCJVGrVv7lnTi1WJ6XG8lcUzYLC0lmC', 'admin', 1605000, 1700000, 95000, 'uzaET0WhjqqZ7snHgd48QtHKHC7fWZ6uEEJ2Bg8BaojyFkqRUBvPABoAfj48', '2020-11-27 23:57:21', '2020-12-09 00:12:28'),
+(2, 'Sultan Achmad Qum M', 'sultan@gmail.com', '$2y$10$lb592LGGzZLR7d1YZT40Rugv8seJ2ByGa3ZUH7m..x3LSCZ0gqxSm', 'user', 1000000, 1000000, 0, 'TPHOu8lcYp3CzdnSTGcvzSvC7pMGspvgjECn1UczWiziwwWzAw8Jqq2QitSr', '2020-12-08 08:29:01', '2020-12-08 10:41:07'),
 (3, 'Moh. Riza Zulfahnur', 'riza@gmail.com', '$2y$10$Ydd0UGt1.E7yOAI776HZpe5vRGqfyYVKlExKItaQOz5.fZ3q5mjcW', 'user', 0, 0, 0, 'THpJeAJNjNz7tsStZ76G8Y9d43NY6ozdpVEOBAwL4CMZ4dyDb51gX5B5kfPx', '2020-12-08 08:29:50', '2020-12-08 08:29:50'),
-(4, 'Yuni Kurnia Taramita', 'yunikurnia@gmail.com', '$2y$10$NqW3Y/hxoSylf5rKiSdxn.Kx24JMDxcZFv22Cc63oijJPt4sokUF.', 'user', 0, 0, 0, 'o1AWGRxHJo7UEANmszRehCVrCBrZ4YYy23BDzPYC3NzdYSYIZhvZS2TW1JjE', '2020-12-08 08:41:24', '2020-12-08 08:41:24');
+(4, 'Yuni Kurnia Taramita', 'yunikurnia@gmail.com', '$2y$10$NqW3Y/hxoSylf5rKiSdxn.Kx24JMDxcZFv22Cc63oijJPt4sokUF.', 'user', 0, 0, 0, 'LFyl3kL6kwsXvhDE5hlOsuizF8YixYSEAF5ubKfwH9d0QY9D5ZxpwSSpHph3', '2020-12-08 08:41:24', '2020-12-08 08:41:24');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `wishlist`
+--
+
+CREATE TABLE `wishlist` (
+  `id` int(11) NOT NULL,
+  `users_id` int(11) NOT NULL,
+  `nama_wishlist` varchar(255) NOT NULL,
+  `harga_wishlist` int(50) NOT NULL,
+  `tanggal_wishlist` date NOT NULL,
+  `image_wishlist` varchar(255) NOT NULL,
+  `status_wishlist` varchar(50) NOT NULL DEFAULT 'Belum Tercapai',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `wishlist`
+--
+
+INSERT INTO `wishlist` (`id`, `users_id`, `nama_wishlist`, `harga_wishlist`, `tanggal_wishlist`, `image_wishlist`, `status_wishlist`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Kamera DSLR', 5000000, '2020-12-10', '10122020153203_Screenshot_1.jpg', 'Sudah Tercapai', '2020-12-10 07:48:55', '2020-12-10 08:32:03'),
+(2, 1, 'Dompet Kulit', 100000, '2020-12-11', '10122020153400_Screenshot_3.jpg', 'Belum Tercapai', '2020-12-10 08:06:50', '2020-12-10 08:36:29'),
+(3, 1, 'MIDI Keyboard Piano', 1900000, '2020-12-10', '10122020153314_Screenshot_2.jpg', 'Belum Tercapai', '2020-12-10 08:33:14', '2020-12-10 08:34:42'),
+(4, 1, 'Dummy', 1500000, '2020-12-10', 'noimage.jpg', 'Belum Tercapai', '2020-12-10 08:38:07', '2020-12-10 08:38:07');
 
 --
 -- Indexes for dumped tables
@@ -133,11 +188,23 @@ ALTER TABLE `pemasukan`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `pengeluaran`
+--
+ALTER TABLE `pengeluaran`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `users_email_unique` (`email`);
+
+--
+-- Indexes for table `wishlist`
+--
+ALTER TABLE `wishlist`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -153,6 +220,12 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `pemasukan`
 --
 ALTER TABLE `pemasukan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `pengeluaran`
+--
+ALTER TABLE `pengeluaran`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
@@ -160,6 +233,12 @@ ALTER TABLE `pemasukan`
 --
 ALTER TABLE `users`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `wishlist`
+--
+ALTER TABLE `wishlist`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

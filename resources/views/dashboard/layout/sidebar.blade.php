@@ -68,7 +68,7 @@
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">MENU WISHLIST</h6>
-                <a class="collapse-item" href="#">Daftar Wishlist</a>
+                <a class="collapse-item" href="/wishlist">Daftar Wishlist</a>
                 <a class="collapse-item" href="#">Cetak Wishlist</a>
             </div>
         </div>
@@ -89,6 +89,27 @@
             </div>
         </div>
     </li>
+
+    @if(auth()->user()->role == "admin")
+    <hr class="sidebar-divider">
+    <div class="sidebar-heading">
+        Admin Menu
+    </div>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAdminMenu"
+            aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-fw fa-user"></i>
+            <span>User</span>
+        </a>
+        <div id="collapseAdminMenu" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">ADMIN MENU</h6>
+                <a class="collapse-item" href="">Kelola User</a>
+                <a class="collapse-item" href="#">Cetak Laporan</a>
+            </div>
+        </div>
+    </li>
+    @endif
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 
