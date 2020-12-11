@@ -58,4 +58,30 @@ class PemasukanController extends Controller
 
         return redirect('/pemasukan')->with('status', 'Data Pemasukan Sukses Dihapus');
     }
+
+    public function filter(Request $request)
+    {
+        if (!$request->startdate && !$request->enddate) {
+            $pemasukan = Pemasukan::where('users_id', auth()->user()->id)->get();
+            return view('dashboard.pemasukan.filter', ['pemasukan' => $pemasukan]);
+        } else {
+            $pemasukan = Pemasukan::whereBetween('tanggal_pemasukan', [$request->startdate, $request->enddate])
+                ->where('users_id', auth()->user()->id)
+                ->get();
+            return view('dashboard.pemasukan.filter', ['pemasukan' => $pemasukan, 'startdate' => $request->startdate, 'enddate' => $request->enddate]);
+        }
+    }
+
+    public function print(Request $request)
+    {
+        if (!$request->startdate && !$request->enddate) {
+            $pemasukan = Pemasukan::where('users_id', auth()->user()->id)->get();
+        } else {
+            $pemasukan = Pemasukan::whereBetween('tanggal_pemasukan', [$request->startdate, $request->enddate])
+                ->where('users_id', auth()->user()->id)
+                ->get();
+        }
+        // dd($pemasukan);
+        return view('dashboard.pemasukan.report', ['pemasukan' => $pemasukan]);
+    }
 }

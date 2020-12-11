@@ -37,7 +37,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">MENU PEMASUKAN</h6>
                 <a class="collapse-item" href="/pemasukan">Daftar Pemasukan</a>
-                <a class="collapse-item" href="#">Cetak Laporan</a>
+                <a class="collapse-item" href="/pemasukan/filter">Cetak Laporan</a>
             </div>
         </div>
     </li>

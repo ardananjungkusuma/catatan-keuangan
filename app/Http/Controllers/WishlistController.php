@@ -93,4 +93,16 @@ class WishlistController extends Controller
 
         return redirect('/wishlist')->with('status', 'Sukses Edit Wishlist');
     }
+
+    public function delete($id)
+    {
+        $pathUpload = 'img/wishlist/';
+        $data_wishlist = Wishlist::find($id);
+        if ($data_wishlist->image_wishlist != "noimage.jpg") {
+            unlink($pathUpload . $data_wishlist->image_wishlist);
+        }
+
+        $data_wishlist->delete();
+        return redirect('/wishlist')->with('status', 'Sukses Hapus Wishlist');
+    }
 }

@@ -26,6 +26,8 @@ Route::group(['middleware' => ['auth', 'roleCheck:admin,user']], function () {
     Route::get('/pemasukan', 'PemasukanController@index');
     Route::post('/pemasukan/add', 'PemasukanController@add');
     Route::get('/pemasukan/{id}/delete', 'PemasukanController@delete');
+    Route::match(array('GET', 'POST'), '/pemasukan/filter', 'PemasukanController@filter');
+    Route::match(array('GET', 'POST'), '/pemasukan/print', 'PemasukanController@print');
 
     Route::get('/pengeluaran', 'PengeluaranController@index');
     Route::post('/pengeluaran/add', 'PengeluaranController@add');
@@ -35,4 +37,5 @@ Route::group(['middleware' => ['auth', 'roleCheck:admin,user']], function () {
     Route::post('wishlist/add', 'WishlistController@add');
     Route::get('/wishlist/{id}/edit', 'WishlistController@edit');
     Route::post('/wishlist/{id}/postEdit', 'WishlistController@postEdit');
+    Route::get('/wishlist/{id}/delete', 'WishlistController@delete');
 });
