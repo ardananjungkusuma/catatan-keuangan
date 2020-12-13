@@ -38,4 +38,29 @@ class HutangController extends Controller
 
         return redirect('/hutang')->with('status', 'Data Hutang Sukses Dihapus');
     }
+
+    public function filter(Request $request)
+    {
+        if (!$request->startdate && !$request->enddate) {
+            $hutang = Hutang::where('users_id', auth()->user()->id)->get();
+            return view('dashboard.hutang.filter', ['hutang' => $hutang]);
+        } else {
+            $hutang = Hutang::whereBetween('tanggal_hutang', [$request->startdate, $request->enddate])
+                ->where('users_id', auth()->user()->id)
+                ->get();
+            return view('dashboard.hutang.filter', ['hutang' => $hutang, 'startdate' => $request->startdate, 'enddate' => $request->enddate]);
+        }
+    }
+
+    public function print(Request $request)
+    {
+        if (!$request->startdate && !$request->enddate) {
+            $hutang = Hutang::where('users_id', auth()->user()->id)->get();
+        } else {
+            $hutang = Hutang::whereBetween('tanggal_hutang', [$request->startdate, $request->enddate])
+                ->where('users_id', auth()->user()->id)
+                ->get();
+        }
+        return view('dashboard.hutang.report', ['hutang' => $hutang]);
+    }
 }

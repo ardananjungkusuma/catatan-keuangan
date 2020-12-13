@@ -46,4 +46,6 @@ Route::group(['middleware' => ['auth', 'roleCheck:admin,user']], function () {
     Route::get('/hutang', 'HutangController@index');
     Route::post('/hutang/add', 'HutangController@add');
     Route::get('/hutang/{id}/delete', 'HutangController@delete');
+    Route::match(array('GET', 'POST'), '/hutang/filter', 'HutangController@filter');
+    Route::match(array('GET', 'POST'), '/hutang/print', 'HutangController@print');
 });
