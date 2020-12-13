@@ -5,16 +5,16 @@
 @endsection
 
 @section('content')
+@if(session('status'))
+<div class="alert alert-info" role="alert">
+    {{ session('status') }}
+</div>
+@endif
+<button type="button" class="btn btn-sm btn-success shadow-sm mb-3" data-toggle="modal" data-target="#addModal"><i
+        class="fas fa-plus fa-sm text-white-50"></i>
+    Tambah
+    Pengeluaran</button>
 <div class="table-responsive">
-    @if(session('status'))
-    <div class="alert alert-info" role="alert">
-        {{ session('status') }}
-    </div>
-    @endif
-    <button type="button" class="btn btn-sm btn-success shadow-sm mb-3" data-toggle="modal" data-target="#addModal"><i
-            class="fas fa-plus fa-sm text-white-50"></i>
-        Tambah
-        Pengeluaran</button>
     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
         <thead>
             <tr>

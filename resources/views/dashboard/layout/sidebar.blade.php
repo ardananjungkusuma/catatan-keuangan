@@ -53,7 +53,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">MENU PENGELUARAN</h6>
                 <a class="collapse-item" href="/pengeluaran">Daftar Pengeluaran</a>
-                <a class="collapse-item" href="#">Cetak Laporan</a>
+                <a class="collapse-item" href="/pengeluaran/filter">Cetak Laporan</a>
             </div>
         </div>
     </li>
@@ -69,7 +69,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">MENU WISHLIST</h6>
                 <a class="collapse-item" href="/wishlist">Daftar Wishlist</a>
-                <a class="collapse-item" href="#">Cetak Wishlist</a>
+                <a class="collapse-item" href="/wishlist/filter">Cetak Wishlist</a>
             </div>
         </div>
     </li>
@@ -84,8 +84,8 @@
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">MENU HUTANG</h6>
-                <a class="collapse-item" href="#">Daftar Hutang</a>
-                <a class="collapse-item" href="#">Cetak Hutang</a>
+                <a class="collapse-item" href="/hutang">Daftar Hutang</a>
+                <a class="collapse-item" href="/hutang/filter">Cetak Hutang</a>
             </div>
         </div>
     </li>

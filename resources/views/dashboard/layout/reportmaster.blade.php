@@ -16,7 +16,7 @@
 
 </head>
 
-<body onload="window.print();window.onafterprint=function(){ window.close();}">
+<body onload="window.print()">
     <br><br>
     <center>
         <h5>Laporan @yield('title_content')</h5>

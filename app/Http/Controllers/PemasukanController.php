@@ -81,7 +81,6 @@ class PemasukanController extends Controller
                 ->where('users_id', auth()->user()->id)
                 ->get();
         }
-        // dd($pemasukan);
         return view('dashboard.pemasukan.report', ['pemasukan' => $pemasukan]);
     }
 }

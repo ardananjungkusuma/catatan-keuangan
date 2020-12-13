@@ -32,10 +32,18 @@ Route::group(['middleware' => ['auth', 'roleCheck:admin,user']], function () {
     Route::get('/pengeluaran', 'PengeluaranController@index');
     Route::post('/pengeluaran/add', 'PengeluaranController@add');
     Route::get('/pengeluaran/{id}/delete', 'PengeluaranController@delete');
+    Route::match(array('GET', 'POST'), '/pengeluaran/filter', 'PengeluaranController@filter');
+    Route::match(array('GET', 'POST'), '/pengeluaran/print', 'PengeluaranController@print');
 
     Route::get('/wishlist', 'WishlistController@index');
     Route::post('wishlist/add', 'WishlistController@add');
     Route::get('/wishlist/{id}/edit', 'WishlistController@edit');
     Route::post('/wishlist/{id}/postEdit', 'WishlistController@postEdit');
     Route::get('/wishlist/{id}/delete', 'WishlistController@delete');
+    Route::match(array('GET', 'POST'), '/wishlist/filter', 'WishlistController@filter');
+    Route::match(array('GET', 'POST'), '/wishlist/print', 'WishlistController@print');
+
+    Route::get('/hutang', 'HutangController@index');
+    Route::post('/hutang/add', 'HutangController@add');
+    Route::get('/hutang/{id}/delete', 'HutangController@delete');
 });

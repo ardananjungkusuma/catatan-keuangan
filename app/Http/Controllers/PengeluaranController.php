@@ -58,4 +58,29 @@ class PengeluaranController extends Controller
 
         return redirect('/pengeluaran')->with('status', 'Data Pengeluaran Sukses Dihapus');
     }
+
+    public function filter(Request $request)
+    {
+        if (!$request->startdate && !$request->enddate) {
+            $pengeluaran = Pengeluaran::where('users_id', auth()->user()->id)->get();
+            return view('dashboard.pengeluaran.filter', ['pengeluaran' => $pengeluaran]);
+        } else {
+            $pengeluaran = Pengeluaran::whereBetween('tanggal_pengeluaran', [$request->startdate, $request->enddate])
+                ->where('users_id', auth()->user()->id)
+                ->get();
+            return view('dashboard.pengeluaran.filter', ['pengeluaran' => $pengeluaran, 'startdate' => $request->startdate, 'enddate' => $request->enddate]);
+        }
+    }
+
+    public function print(Request $request)
+    {
+        if (!$request->startdate && !$request->enddate) {
+            $pengeluaran = Pengeluaran::where('users_id', auth()->user()->id)->get();
+        } else {
+            $pengeluaran = Pengeluaran::whereBetween('tanggal_pengeluaran', [$request->startdate, $request->enddate])
+                ->where('users_id', auth()->user()->id)
+                ->get();
+        }
+        return view('dashboard.pengeluaran.report', ['pengeluaran' => $pengeluaran]);
+    }
 }

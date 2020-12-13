@@ -105,4 +105,29 @@ class WishlistController extends Controller
         $data_wishlist->delete();
         return redirect('/wishlist')->with('status', 'Sukses Hapus Wishlist');
     }
+
+    public function filter(Request $request)
+    {
+        if (!$request->startdate && !$request->enddate) {
+            $wishlist = Wishlist::where('users_id', auth()->user()->id)->get();
+            return view('dashboard.wishlist.filter', ['wishlist' => $wishlist]);
+        } else {
+            $wishlist = Wishlist::whereBetween('tanggal_wishlist', [$request->startdate, $request->enddate])
+                ->where('users_id', auth()->user()->id)
+                ->get();
+            return view('dashboard.wishlist.filter', ['wishlist' => $wishlist, 'startdate' => $request->startdate, 'enddate' => $request->enddate]);
+        }
+    }
+
+    public function print(Request $request)
+    {
+        if (!$request->startdate && !$request->enddate) {
+            $wishlist = Wishlist::where('users_id', auth()->user()->id)->get();
+        } else {
+            $wishlist = Wishlist::whereBetween('tanggal_wishlist', [$request->startdate, $request->enddate])
+                ->where('users_id', auth()->user()->id)
+                ->get();
+        }
+        return view('dashboard.wishlist.report', ['wishlist' => $wishlist]);
+    }
 }
