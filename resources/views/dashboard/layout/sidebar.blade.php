@@ -104,8 +104,7 @@
         <div id="collapseAdminMenu" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">ADMIN MENU</h6>
-                <a class="collapse-item" href="">Kelola User</a>
-                <a class="collapse-item" href="#">Cetak Laporan</a>
+                <a class="collapse-item" href="/admin/listuser">Kelola User</a>
             </div>
         </div>
     </li>

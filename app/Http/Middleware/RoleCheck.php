@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Auth;
 
 class RoleCheck
 {
@@ -18,6 +19,12 @@ class RoleCheck
         if (in_array($request->user()->role, $roles)) {
             return $next($request);
         } else {
+            if ($request->user()->role == "deactivate") {
+                Auth::logout();
+                return redirect('/login')->with('status', 'Maaf Akun Anda Dinonaktifkan');
+            } else if ($request->user()->role == "user") {
+                return redirect('/dashboard')->with('status', 'Maaf Anda Tidak Memiliki Hak Akses');
+            }
             return redirect('/');
         }
     }
