@@ -14,8 +14,8 @@
 Route::get('/', function () {
     return view('home.index');
 });
-Route::get('/login', 'AuthController@login')->name('login');
-Route::get('/register', 'AuthController@register')->name('register');
+Route::get('/login', 'AuthController@login')->middleware('guest')->name('login');
+Route::get('/register', 'AuthController@register')->middleware('guest')->name('register');
 Route::get('/logout', 'AuthController@logout');
 Route::post('/postLogin', 'AuthController@postLogin');
 Route::post('/postRegister', 'AuthController@postRegister');
