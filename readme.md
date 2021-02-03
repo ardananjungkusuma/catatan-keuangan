@@ -15,7 +15,6 @@ Platform Website untuk membantu segala pencatatan keuangan mulai dari Pemasukan,
 ## 🌌 License
 
 -   Copyright © 2020 Ardan Anjung Kusuma
--   **Catatan Keuangan is open-sourced software licensed under the MIT license**
 
 ---
 
